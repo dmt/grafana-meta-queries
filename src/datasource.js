@@ -43,8 +43,8 @@ define([
                         pointer = (pointer + 1) % length;
                     },
                     avg: function () {
-                        nonnull = buffer.filter(function (x) { return x != null; });
-                        sum = nonnull.reduce(function (acc, val) { return acc + val; });
+                        var nonnull = buffer.filter(function (x) { return x != null; });
+                        var sum = nonnull.reduce(function (acc, val) { return acc + val; });
                         return sum / nonnull.length;
                     }
                 };
@@ -176,7 +176,7 @@ define([
                                         datum.datapoints.forEach(function (datapoint) {
                                             buffer.push(datapoint[0])
 
-                                            datapoints.push([buffer.avg, datapoint[1]])
+                                            datapoints.push([buffer.avg(), datapoint[1]])
                                         })
                                     }
                                 });
