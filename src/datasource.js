@@ -52,8 +52,6 @@ define([
 
             // Called once per panel (graph)
             this.query = function (options) {
-                console.log("Do query");
-                console.log(options);
 
                 var _this = this;
                 var sets = _.groupBy(options.targets, 'datasource');

@@ -1,27 +1,28 @@
 {
-  "name": "MetaQueries",
-  "id": "goshposh-metaqueries-datasource",
+  "name": "MetaQueries2",
+  "id": "goshposh-metaqueries-datasource-dmt",
   "type": "datasource",
-
   "metrics": true,
-  "mixed" : true,
-
+  "mixed": true,
   "info": {
     "version": "0.0.1",
     "author": {
       "name": "Gaurav Shah",
       "url": "https://github.com/GoshPosh/grafana-meta-queries"
     },
-   "links":[
-     {"name": "GitHub", "url": "https://github.com/GoshPosh/grafana-meta-queries#readme"}
+    "links": [
+      {
+        "name": "GitHub",
+        "url": "https://github.com/dmt/grafana-meta-queries"
+      }
     ],
-   "logos": {
+    "logos": {
       "small": "img/logo.png",
       "large": "img/logo.png"
     },
-   "dependencies": {
-     "grafanaVersion": "4.x.x",
-     "plugins": [ ]
+    "dependencies": {
+      "grafanaVersion": "4.x.x",
+      "plugins": []
     }
   }
 }
