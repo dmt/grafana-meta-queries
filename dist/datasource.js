@@ -168,24 +168,22 @@ define([
 
                         promise = datasourceSrv.get(options.targets[0].datasource).then(function (ds) {
                             return promisesByRefId[query].then(function (results) {
-                                var datapoints = []
                                 var data = results.data;
-                                data.forEach(function (datum) {
-                                    if (datum.target === metric) {
-                                        var buffer = createRingBuffer(periodsToShift)
-                                        datum.datapoints.forEach(function (datapoint) {
-                                            buffer.push(datapoint[0])
+                                return data.map(function (datum) {
+                                    var datapoints = []
+                                    var buffer = createRingBuffer(periodsToShift)
+                                    datum.datapoints.forEach(function (datapoint) {
+                                        buffer.push(datapoint[0])
 
-                                            datapoints.push([buffer.avg(), datapoint[1]])
-                                        })
-                                    }
+                                        datapoints.push([buffer.avg(), datapoint[1]])
+                                    })
+
+                                    return {
+                                        "target": outputMetricName + datum.target,
+                                        "datapoints": datapoints,
+                                        "hide": target.hide
+                                    };
                                 });
-                                return [{
-                                    "target": outputMetricName,
-                                    "datapoints": datapoints,
-                                    "hide": target.hide
-                                }];
-
                             });
                         });
 
